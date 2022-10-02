@@ -1,18 +1,19 @@
 <html>
   <head>
-    <title>IMA HTML5 Simple Demo</title>
+    <title>IMA HTML5 Manila Mayhem Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
   <body>
     <div id="mainContainer">
       <div id="content">
-        <iframe src="https://manilamayhem-g.netlify.app/" width="100%" height="300">
-        </iframe>
+        <video id="contentElement" playsinline muted>
+          <source src="https://storage.googleapis.com/gvabox/media/samples/stock.mp4"></source>
+        </video>
       </div>
       <div id="adContainer"></div>
     </div>
-    <script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
     <script type="text/javascript" src="ads.js"></script>
   </body>
 </html>
