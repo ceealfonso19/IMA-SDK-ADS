@@ -81,7 +81,7 @@ function playAds() {
 
   try {
     // Initialize the ads manager. Ad rules playlist will start at this time.
-    adsManager.init(1000, 660, google.ima.ViewMode.NORMAL);
+    adsManager.init(1720, 1080, google.ima.ViewMode.NORMAL);
     // Call play to start showing the ad. Single video and overlay ads will
     // start at this time; the call will be ignored for ad rules.
     adsManager.start();
