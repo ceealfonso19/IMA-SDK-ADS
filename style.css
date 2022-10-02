@@ -1,28 +1,28 @@
 #mainContainer {
   position: relative;
-  width: 1720px;
-  height: 1080px;
+  width: 1000px;
+  height: 660px;
 }
 
 #content {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 1720px;
-  height: 1080px;
+  width: 1000px;
+  height: 660px;
 }
 
 #adContainer {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 1720px;
-  height: 1080px;
+  width: 1000px;
+  height: 660px;
 }
 
 #contentElement {
-  width: 1720px;
-  height: 1080px;
+  width: 1000px;
+  height: 660px;
   overflow: hidden;
 }
 
