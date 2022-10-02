@@ -38,7 +38,7 @@
 
   <script type="text/javascript">
   $(document).ready(function(){
-      $('#playButton').load(function(){ 
+      $('#playButton').on('load',function(){ 
           if(!$('#iframe').length) {
                   $('.iframeHolder').html('<iframe id="iframe" src="https://manilamayhem-g.netlify.app/" width="1000" height="660"></iframe>');
           }
