@@ -16,7 +16,7 @@ let videoContent;
 function init() {
   videoContent = document.getElementById('contentElement');
   playButton = document.getElementById('playButton');
-  playButton.addEventListener('load', playAds);
+  playButton.addEventListener('click', playAds);
   setUpIMA();
 }
 
