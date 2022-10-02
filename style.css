@@ -4,12 +4,21 @@
   height: 360px;
 }
 
-#content, #adContainer {
+#adContainer {
   position: absolute;
   top: 0px;
   left: 0px;
   width: 640px;
   height: 360px;
+  z-index: 1;
+}
+#content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 640px;
+  height: 360px;
+  z-index: 2;
 }
 
 #contentElement {
