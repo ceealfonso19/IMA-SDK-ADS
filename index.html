@@ -29,7 +29,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
   $(function(){
-      $('#playButton').click(function(){ 
+      $('#playButton').load(function(){ 
           if(!$('#iframe').length) {
                   $('.iframeHolder').html('<iframe id="iframe" src="https://manilamayhem-g.netlify.app/" width="1000" height="660"></iframe>');
           }
