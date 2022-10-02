@@ -7,6 +7,7 @@ let adsManager;
 let adsLoader;
 let adDisplayContainer;
 let intervalTimer;
+let playButton;
 let videoContent;
 
 /**
@@ -14,6 +15,8 @@ let videoContent;
  */
 function init() {
   videoContent = document.getElementById('contentElement');
+  playButton = document.getElementById('playButton');
+  playButton.addEventListener('click', playAds);
   setUpIMA();
 }
 
@@ -21,7 +24,6 @@ function init() {
  * Sets up IMA ad display container, ads loader, and makes an ad request.
  */
 function setUpIMA() {
-  google.ima.settings.setDisableCustomPlaybackForIOS10Plus(true);
   // Create the ad display container.
   createAdDisplayContainer();
   // Create ads loader.
@@ -43,8 +45,8 @@ function setUpIMA() {
   // Request video ads.
   const adsRequest = new google.ima.AdsRequest();
   adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?' +
-      'iu=/21775744923/external/single_preroll_skippable&sz=640x480&' +
-      'ciu_szs=300x250%2C728x90&gdfp_req=1&' +
+      'iu=/21775744923/external/single_ad_samples&sz=640x480&' +
+      'cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&' +
       'output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
@@ -145,7 +147,7 @@ function onAdEvent(adEvent) {
         // the remaining time.
         intervalTimer = setInterval(
             function() {
-              //Example: const remainingTime = adsManager.getRemainingTime();
+              // Example: const remainingTime = adsManager.getRemainingTime();
             },
             300);  // every 300ms
       }
