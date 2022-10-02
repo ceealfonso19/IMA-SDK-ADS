@@ -15,8 +15,8 @@ let videoContent;
  */
 function init() {
   videoContent = document.getElementById('contentElement');
-  // playButton = document.getElementById('playButton');
-  // playButton.addEventListener('click', playAds);
+  playButton = document.getElementById('playButton');
+  playButton.addEventListener('click', playAds);
   setUpIMA();
 }
 
@@ -24,7 +24,6 @@ function init() {
  * Sets up IMA ad display container, ads loader, and makes an ad request.
  */
 function setUpIMA() {
-  google.ima.settings.setDisableCustomPlaybackForIOS10Plus(true);
   // Create the ad display container.
   createAdDisplayContainer();
   // Create ads loader.
@@ -46,10 +45,9 @@ function setUpIMA() {
   // Request video ads.
   const adsRequest = new google.ima.AdsRequest();
   adsRequest.adTagUrl = 'https://pubads.g.doubleclick.net/gampad/ads?' +
-      'iu=/21775744923/external/single_preroll_skippable&sz=640x480&' +
-      'ciu_szs=300x250%2C728x90&gdfp_req=1&' +
+      'iu=/21775744923/external/single_ad_samples&sz=640x480&' +
+      'cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&' +
       'output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
-
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
   // select the correct creative if multiple are returned.
@@ -76,14 +74,13 @@ function createAdDisplayContainer() {
  * Loads the video content and initializes IMA ad playback.
  */
 function playAds() {
-  // Initialize the container. Must be done through a user action on mobile
-  // devices.
-  // videoContent.load();
+  // Initialize the container. Must be done via a user action on mobile devices.
+  videoContent.load();
   adDisplayContainer.initialize();
 
   try {
     // Initialize the ads manager. Ad rules playlist will start at this time.
-    adsManager.init(1000, 660, google.ima.ViewMode.NORMAL);
+    adsManager.init(640, 360, google.ima.ViewMode.NORMAL);
     // Call play to start showing the ad. Single video and overlay ads will
     // start at this time; the call will be ignored for ad rules.
     adsManager.start();
@@ -119,8 +116,6 @@ function onAdsManagerLoaded(adsManagerLoadedEvent) {
   adsManager.addEventListener(google.ima.AdEvent.Type.LOADED, onAdEvent);
   adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdEvent);
   adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEvent);
-
-  playAds();
 }
 
 /**
@@ -128,8 +123,8 @@ function onAdsManagerLoaded(adsManagerLoadedEvent) {
  * @param {!google.ima.AdEvent} adEvent
  */
 function onAdEvent(adEvent) {
-  // Retrieve the ad from the event. Some events (for example,
-  // ALL_ADS_COMPLETED) don't have ad object associated.
+  // Retrieve the ad from the event. Some events (e.g. ALL_ADS_COMPLETED)
+  // don't have ad object associated.
   const ad = adEvent.getAd();
   switch (adEvent.type) {
     case google.ima.AdEvent.Type.LOADED:
@@ -181,8 +176,8 @@ function onAdError(adErrorEvent) {
  */
 function onContentPauseRequested() {
   videoContent.pause();
-  // This function is where you should setup UI for showing ads (for example,
-  // display ad timer countdown, disable seeking and more.)
+  // This function is where you should setup UI for showing ads (e.g.
+  // display ad timer countdown, disable seeking etc.)
   // setupUIForAds();
 }
 
